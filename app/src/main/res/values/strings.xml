@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Forminhas Solfi</string>
+    <string name="quantidade">Quantidade</string>
+    <string name="valores">Valores</string>
+    <string name="unidades25">25 Unidades</string>
+    <string name="unidades50">50 Unidades</string>
+    <string name="unidades100">100 Unidades</string>
+    <string name="unidades500">500 Unidades</string>
+    <string name="unidades300">300 Unidades</string>
 </resources>
