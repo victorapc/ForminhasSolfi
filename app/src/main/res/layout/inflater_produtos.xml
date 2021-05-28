@@ -152,7 +152,8 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
 
                     <TextView
@@ -162,7 +163,8 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
 
                     <TextView
@@ -172,7 +174,8 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
 
                     <TextView
@@ -182,7 +185,8 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
 
                     <TextView
@@ -192,7 +196,8 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
 
                     <TextView
@@ -202,9 +207,9 @@
                         android:background="@color/rose_gold_300"
                         android:textColor="@color/white"
                         android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp">
+                        android:paddingRight="5dp"
+                        android:gravity="right">
                     </TextView>
-
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
