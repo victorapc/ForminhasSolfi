@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ForminhasSophi">
         <activity
-            android:name="com.inux.forminhassolfi.MainActivity"
+            android:name="com.inux.forminhassolfi.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
