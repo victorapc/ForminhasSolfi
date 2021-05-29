@@ -8,4 +8,18 @@
     <string name="unidades500">500 Unidades</string>
     <string name="unidades300">300 Unidades</string>
     <string name="voce_sonha_e_nos_realizamos">Você sonha e nós realizamos!</string>
+    <string name="carrinho">Carrinho</string>
+    <string name="quem_somos">Quem Somos</string>
+    <string name="layoutcomplemento">LayoutComplemento</string>
+    <string name="como_comprar">Como Comprar</string>
+    <string name="contatos">Contatos</string>
+    <string name="apresentacao">Apresentação</string>
+    <string name="primeiro_paragrafo_quem_somos">O Ateliê Solfi trabalha com doces personalizados a mais de 5 anos. Com o passar do tempo sentimos necessidade de completar nosso atendimento, fornecendo além de doces, forminhas especiais que abrilhantassem ainda mais as comemorações.</string>
+    <string name="segundo_paragrafo_quem_somos">Então nasceu as Forminhas Solfi, que são forminhas para doces desenvolvidas de forma artesanal, com todo carinho, para todos os tipos de ocasiões.</string>
+    <string name="terceiro_paragrafo_quem_somos">Nossa forminhas podem ser adaptadas de acordo com o tema, cor e preferência de cada cliente. Faça sua mesa de doces ficar inesquecível e tenha fotos incríveis!!</string>
+    <string name="um_abraco">Um abraço</string>
+    <string name="primeiro_paragrafo_como_comprar">Nossas encomendas são realizadas mediante contato telefônico, whatssap ou pessoalmente.</string>
+    <string name="segundo_paragrafo_como_comprar">Trabalhamos com uma entrada de 50% mediante fechamento do pedido e o restante na entrega.</string>
+    <string name="terceiro_paragrafo_como_comprar">O prazo mínimo de confecção é de 15 dias úteis, mas pode sofrer variações, a combinar, de acordo com o cronograma.</string>
+    <string name="quarto_paragrafo_como_comprar">Frete não incluso nos valores.</string>
 </resources>

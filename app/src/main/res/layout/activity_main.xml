@@ -31,7 +31,6 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/rose_gold_200"
@@ -39,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:contentDescription="@string/layoutcomplemento"
     />
 
     <TextView
@@ -68,16 +68,94 @@
         app:layout_constraintBottom_toTopOf="@id/barra_button"
     />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barra_button"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="@color/rose_gold_200"
-        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <ImageButton
+            android:id="@+id/imb_Quem_Somos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:layout_marginStart="32dp"
+            android:gravity="center"
+            android:background="@null"
+            android:src="@drawable/ic_quem_somos"
+            android:textColor="@color/white"
+            android:contentDescription="@string/quem_somos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+        />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quem_somos"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/imb_Quem_Somos"
+            app:layout_constraintEnd_toEndOf="@+id/imb_Quem_Somos"
+            app:layout_constraintTop_toBottomOf="@+id/imb_Quem_Somos"
+        />
+
+        <ImageButton
+            android:id="@+id/imb_Como_Comprar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:gravity="center"
+            android:background="@null"
+            android:src="@drawable/ic_como_comprar"
+            android:textColor="@color/white"
+            android:contentDescription="@string/como_comprar"
+            app:layout_constraintStart_toEndOf="@+id/imb_Quem_Somos"
+            app:layout_constraintEnd_toStartOf="@+id/imb_Contato"
+            app:layout_constraintTop_toTopOf="parent"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/como_comprar"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/imb_Como_Comprar"
+            app:layout_constraintEnd_toEndOf="@+id/imb_Como_Comprar"
+            app:layout_constraintTop_toBottomOf="@+id/imb_Como_Comprar"
+        />
+
+        <ImageButton
+            android:id="@+id/imb_Contato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="center"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
+            android:background="@null"
+            android:src="@drawable/ic_contato"
+            android:textColor="@color/white"
+            android:contentDescription="@string/contatos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contatos"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/imb_Contato"
+            app:layout_constraintEnd_toEndOf="@+id/imb_Contato"
+            app:layout_constraintTop_toBottomOf="@+id/imb_Contato"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

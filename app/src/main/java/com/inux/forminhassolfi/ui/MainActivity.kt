@@ -1,6 +1,10 @@
 package com.inux.forminhassolfi.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.inux.forminhassolfi.R
@@ -20,10 +24,27 @@ class MainActivity : ActivityPadrao() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         iniciarFormulario()
+
+        imbQuemSomos.setOnClickListener{ abrirActivity ->
+            startActivity(Intent(this, QuemSomos::class.java))
+        }
+
+        imbComoComprar.setOnClickListener{ abrirActivity ->
+            startActivity(Intent(this, ComoComprar::class.java))
+        }
+
+        imbContato.setOnClickListener{ abrirActivity ->
+            startActivity(Intent(this, Contato::class.java))
+        }
     }
 
     override fun iniciarFormulario() {
+        //Instanciando objetos XML.
         recyclerProduto = recycler_produto
+
+        imbQuemSomos = imb_Quem_Somos
+        imbComoComprar = imb_Como_Comprar
+        imbContato = imb_Contato
 
         recyclerProduto.layoutManager = LinearLayoutManager(this)
         comporLista()
@@ -42,5 +63,20 @@ class MainActivity : ActivityPadrao() {
                 Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.menu_carrinho -> {
+                Toast.makeText(this, "Carrinho", Toast.LENGTH_LONG).show()
+                true
+            }else -> super.onOptionsItemSelected(item)
+        }
     }
 }
