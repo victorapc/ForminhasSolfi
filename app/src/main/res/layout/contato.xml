@@ -23,7 +23,7 @@
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="40sp"
-            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
         />
     </androidx.appcompat.widget.Toolbar>
 
@@ -37,4 +37,164 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar_Contato"
         android:contentDescription="@string/layoutcomplemento"
     />
+
+    <TextView
+        android:id="@+id/tv_Contatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/contatos"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_Contato"
+    />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="@color/rose_gold_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_Contatos">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_FaceBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_facebook"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/fsolfi"
+            />
+
+            <TextView
+                android:id="@+id/tv_Facebook"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/fsolfi"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/img_FaceBook"
+                app:layout_constraintBottom_toBottomOf="@+id/img_FaceBook"
+                app:layout_constraintStart_toEndOf="@+id/img_FaceBook"
+            />
+
+            <ImageView
+                android:id="@+id/img_WhatsApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_whatsapp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/img_FaceBook"
+                app:layout_constraintStart_toStartOf="@+id/img_FaceBook"
+                android:contentDescription="@string/whatsapp"
+            />
+
+            <TextView
+                android:id="@+id/tv_WhatsApp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/whatsapp"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/img_WhatsApp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_WhatsApp"
+                app:layout_constraintStart_toEndOf="@+id/img_WhatsApp"
+            />
+
+            <ImageView
+                android:id="@+id/img_Instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_instagram"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/img_WhatsApp"
+                app:layout_constraintStart_toStartOf="@+id/img_FaceBook"
+                android:contentDescription="@string/instagram"
+            />
+
+            <TextView
+                android:id="@+id/tv_Instagram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/instagram"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/img_Instagram"
+                app:layout_constraintBottom_toBottomOf="@+id/img_Instagram"
+                app:layout_constraintStart_toEndOf="@+id/img_Instagram"
+            />
+
+            <ImageView
+                android:id="@+id/img_Email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_email"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/img_Instagram"
+                app:layout_constraintStart_toStartOf="@+id/img_FaceBook"
+                android:contentDescription="@string/email"
+            />
+
+            <TextView
+                android:id="@+id/tv_Email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/img_Email"
+                app:layout_constraintBottom_toBottomOf="@+id/img_Email"
+                app:layout_constraintStart_toEndOf="@+id/img_Email"
+            />
+
+            <ImageView
+                android:id="@+id/img_Telefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_telefone"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/img_Email"
+                app:layout_constraintStart_toStartOf="@+id/img_FaceBook"
+                android:contentDescription="@string/telefone"
+            />
+
+            <TextView
+                android:id="@+id/tv_Telefone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/telefone"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/img_Telefone"
+                app:layout_constraintBottom_toBottomOf="@+id/img_Telefone"
+                app:layout_constraintStart_toEndOf="@+id/img_Telefone"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

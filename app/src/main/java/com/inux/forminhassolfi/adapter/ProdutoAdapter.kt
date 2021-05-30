@@ -24,7 +24,7 @@ class ProdutoAdapter(
 
         val decimal = DecimalFormat("#,###.00")
 
-        holder.inf_Prod_Produto.text = item.produto
+        holder.inf_Prod_Produto.text = "${item.codigo} - ${item.produto}"
         holder.inf_Prod_Informacoes.text = item.informacoes
         holder.inf_Prod_Valor25.text = "R$ ${decimal.format(item.qnt25)}"
         holder.inf_Prod_Valor50.text = "R$ ${decimal.format(item.qnt50)}"

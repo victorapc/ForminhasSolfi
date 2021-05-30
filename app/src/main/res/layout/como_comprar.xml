@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/apresentacao"
+        android:text="@string/como_comprar"
         android:gravity="center"
         android:textColor="@color/white"
         android:textStyle="bold"
