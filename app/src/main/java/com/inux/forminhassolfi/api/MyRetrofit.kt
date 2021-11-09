@@ -8,7 +8,7 @@ class MyRetrofit {
 
     companion object {
         private const val BASE_URL =
-            "https://forminhassophi.000webhostapp.com/"
+            "http://forminhassophi.000webhostapp.com/"
         var myRetrofit: MyRetrofit? = null
 
         @get:Synchronized
