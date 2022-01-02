@@ -21,21 +21,11 @@
                 android:id="@+id/inf_Prod_Produto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/rose_gold_300"
                 android:text="FS01 - Camelinha de luxo"
                 android:layout_margin="3dp">
-            </TextView>
-
-            <TextView
-                android:id="@+id/inf_Prod_Informacoes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Forminha em 04 camadas sendo: 02 de pétalas papel especial: 01 de tela dourada e 01 sépala em tela escócia natural. (Cores diversas)"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp">
             </TextView>
 
             <LinearLayout
@@ -53,162 +43,45 @@
                 />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="1dp"
+                    android:layout_gravity="bottom"
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/inf_Prod_Informacoes"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/black"
-                        android:textColor="@color/white"
-                        android:padding="3dp"
-                        android:text="@string/quantidade">
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="Forminhas em papel.\n (Diversas cores)"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp">
                     </TextView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp"
-                        android:text="@string/unidades25">
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp"
-                        android:text="@string/unidades50">
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="1dp"
-                        android:text="@string/unidades100">
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp"
-                        android:text="200 Unidades">
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp"
-                        android:text="@string/unidades300">
-                    </TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingLeft="3dp"
-                        android:text="@string/unidades500">
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="1dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/black"
-                        android:textColor="@color/white"
-                        android:padding="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="26sp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold|italic"
                         android:text="@string/valores">
                     </TextView>
 
                     <TextView
-                        android:id="@+id/inf_Prod_Valor25"
+                        android:id="@+id/inf_Prod_Valor"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
+                        android:textColor="@color/rose_gold_300"
                         android:paddingRight="5dp"
-                        android:gravity="right">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/inf_Prod_Valor50"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingRight="5dp"
-                        android:gravity="right">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/inf_Prod_Valor100"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingRight="5dp"
-                        android:gravity="right">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/inf_Prod_Valor200"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingRight="5dp"
-                        android:gravity="right">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/inf_Prod_Valor300"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingRight="5dp"
-                        android:gravity="right">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/inf_Prod_Valor500"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/rose_gold_300"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="1dp"
-                        android:paddingRight="5dp"
-                        android:gravity="right">
+                        android:layout_marginLeft="20dp"
+                        android:textSize="35sp"
+                        android:textStyle="bold"
+                        android:text="1.35"
+                        android:gravity="left">
                     </TextView>
                 </LinearLayout>
             </LinearLayout>
