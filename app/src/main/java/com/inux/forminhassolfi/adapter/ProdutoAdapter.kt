@@ -22,7 +22,7 @@ class ProdutoAdapter(
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
         val item = produtoLista[position]
 
-        val decimal = DecimalFormat("#,###.00")
+        val decimal = DecimalFormat("0.00")
 
         holder.inf_Prod_Produto.text = "${item.codigo} - ${item.produto}"
         holder.inf_Prod_Informacoes.text = item.informacoes
