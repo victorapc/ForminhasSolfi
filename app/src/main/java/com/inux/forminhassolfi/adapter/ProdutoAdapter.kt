@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inux.forminhassolfi.R
+import com.inux.forminhassolfi.interfacelistener.ProdutoClickedListener
 import com.inux.forminhassolfi.model.Produto
 import kotlinx.android.synthetic.main.inflater_produtos.view.*
 import java.text.DecimalFormat
 
 class ProdutoAdapter(
     val context: Context,
-    val produtoLista: List<Produto>
+    val produtoLista: List<Produto>,
+    private val listener: ProdutoClickedListener
 ) : RecyclerView.Adapter<ProdutoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder =
         ProdutoViewHolder(LayoutInflater.from(parent.context)
@@ -31,6 +33,10 @@ class ProdutoAdapter(
             .with(context)
             .load(item.img)
             .into(holder.inf_Prod_imagem)
+
+        holder.itemView.setOnClickListener{
+            listener.produtoClickedListener(item)
+        }
     }
 
     override fun getItemCount(): Int = produtoLista.size
