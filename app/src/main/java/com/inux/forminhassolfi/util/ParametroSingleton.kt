@@ -5,5 +5,7 @@ import com.inux.forminhassolfi.model.Produto
 class ParametroSingleton {
     companion object {
         lateinit var produto: Produto
+
+        const val INTENT_PRODUTO = "produtos"
     }
 }

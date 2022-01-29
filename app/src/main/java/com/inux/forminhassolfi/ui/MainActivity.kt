@@ -12,6 +12,7 @@ import com.inux.forminhassolfi.api.MyRetrofit
 import com.inux.forminhassolfi.classes.ActivityPadrao
 import com.inux.forminhassolfi.interfacelistener.ProdutoClickedListener
 import com.inux.forminhassolfi.model.Produto
+import com.inux.forminhassolfi.util.ParametroSingleton
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -58,7 +59,9 @@ class MainActivity : ActivityPadrao() {
                 val adapter = ProdutoAdapter(this@MainActivity, response.body()?.toList() as List<Produto>,
                     object : ProdutoClickedListener {
                         override fun produtoClickedListener(produto: Produto) {
-                            Toast.makeText(this@MainActivity, "OPA ${produto.produto}", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this@MainActivity, DetalhesProduto::class.java).apply {
+                                putExtra(ParametroSingleton.INTENT_PRODUTO, produto)
+                            })
                         }
                     })
                 recyclerProduto.adapter = adapter

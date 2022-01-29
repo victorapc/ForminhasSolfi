@@ -26,6 +26,7 @@
         <activity android:name=".ui.QuemSomos"/>
         <activity android:name=".ui.ComoComprar"/>
         <activity android:name=".ui.Contato"/>
+        <activity android:name=".ui.DetalhesProduto"/>
     </application>
 
 </manifest>

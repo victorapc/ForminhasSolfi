@@ -1,7 +1,10 @@
 package com.inux.forminhassolfi.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Produto(
     @SerializedName("id")
     val id: Int,
@@ -15,4 +18,4 @@ data class Produto(
     val valor: Double,
     @SerializedName("img")
     val img: String
-)
+) : Parcelable
