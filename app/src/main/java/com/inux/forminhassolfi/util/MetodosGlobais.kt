@@ -1,8 +1,12 @@
 package com.inux.forminhassolfi.util
 
 import android.content.Context
+import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.view.View
+import com.google.android.material.snackbar.Snackbar
+import com.inux.forminhassolfi.R
 import java.math.BigDecimal
 import java.text.*
 import java.util.*
@@ -62,5 +66,12 @@ class MetodosGlobais(ctx: Context?) {
         val formatado = formatoReal.format(valorStrig.toDouble());
 
         return formatado;
+    }
+
+    fun mensagemSnack(view: View, texto: String, resource: Resources) {
+        Snackbar.make(view, texto, Snackbar.LENGTH_LONG)
+            .setBackgroundTint(resource.getColor(R.color.rose_gold_300, null))
+            .setActionTextColor(resource.getColor(R.color.black, null))
+            .show()
     }
 }

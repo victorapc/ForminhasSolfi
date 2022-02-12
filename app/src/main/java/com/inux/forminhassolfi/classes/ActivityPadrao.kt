@@ -26,6 +26,7 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var txtDetProdProduto: TextView
     protected lateinit var edtDetProdValor: TextInputEditText
     protected lateinit var edtDetProdQuantidae: TextInputEditText
+    protected lateinit var edtDetProdCor: TextInputEditText
     protected lateinit var btDetProdIncluirCarrinho: Button
 
     protected open fun configuracao(){

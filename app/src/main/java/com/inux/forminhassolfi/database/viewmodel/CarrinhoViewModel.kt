@@ -20,25 +20,25 @@ class CarrinhoViewModel(application: Application): AndroidViewModel(application)
         readAllData = repository.readAllData
     }
 
-    fun addUser(carrinho: Carrinho){
+    fun addCarrinho(carrinho: Carrinho){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addCarrinho(carrinho)
         }
     }
 
-    fun deleteUser(carrinho: Carrinho){
+    fun deleteCarrinho(carrinho: Carrinho){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteCarrinho(carrinho)
         }
     }
 
-    fun deleteAllUsers(){
+    fun deleteAllCarrinho(){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllCarrinho()
         }
     }
 
-    fun readUser(idTable: Int) : LiveData<Carrinho>{
+    fun readData(idTable: Int) : LiveData<Carrinho>{
         return repository.readData(idTable)
     }
 }

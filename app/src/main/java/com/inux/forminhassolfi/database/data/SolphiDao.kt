@@ -6,6 +6,7 @@ import com.inux.forminhassolfi.database.entity.Carrinho
 
 @Dao
 interface SolphiDao {
+    // Carrinho
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCarrinho(carrinho: Carrinho)
 
@@ -20,4 +21,5 @@ interface SolphiDao {
 
     @Query("SELECT * FROM carrinho_table WHERE(id = :idTable)")
     fun readData(idTable: Int): LiveData<Carrinho>
+    //----------------------------------------------------------------------------------------------
 }

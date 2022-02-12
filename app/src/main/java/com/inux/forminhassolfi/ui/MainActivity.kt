@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.inux.forminhassolfi.R
 import com.inux.forminhassolfi.adapter.ProdutoAdapter
 import com.inux.forminhassolfi.api.MyRetrofit
 import com.inux.forminhassolfi.classes.ActivityPadrao
+import com.inux.forminhassolfi.database.viewmodel.CarrinhoViewModel
 import com.inux.forminhassolfi.interfacelistener.ProdutoClickedListener
 import com.inux.forminhassolfi.model.Produto
+import com.inux.forminhassolfi.util.MetodosGlobais
 import com.inux.forminhassolfi.util.ParametroSingleton
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
@@ -19,10 +22,16 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : ActivityPadrao() {
+    private lateinit var mCarrinhoViewModel: CarrinhoViewModel
+    private lateinit var globais: MetodosGlobais
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        // Instancias objetos.
+        globais = MetodosGlobais(this)
 
         iniciarFormulario()
 
@@ -40,7 +49,7 @@ class MainActivity : ActivityPadrao() {
     }
 
     override fun iniciarFormulario() {
-        //Instanciando objetos XML.
+        // Instanciando objetos XML.
         recyclerProduto = recycler_produto
 
         imbQuemSomos = imb_Quem_Somos
@@ -74,7 +83,18 @@ class MainActivity : ActivityPadrao() {
     }
 
     private fun visualizarCarrinho() {
-        Toast.makeText(this, "Carrinho", Toast.LENGTH_LONG).show()
+        mCarrinhoViewModel = ViewModelProvider(this).get(CarrinhoViewModel::class.java)
+        mCarrinhoViewModel.readAllData.observe(this, { carrinho ->
+            if (carrinho != null) {
+                if (carrinho.size > 0) {
+                    Toast.makeText(this, "TESTE TEM ITEM CARRINho.", Toast.LENGTH_LONG).show()
+                } else {
+                    globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
+                }
+            } else {
+                globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
