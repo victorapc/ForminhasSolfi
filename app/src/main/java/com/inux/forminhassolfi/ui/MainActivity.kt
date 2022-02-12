@@ -73,6 +73,10 @@ class MainActivity : ActivityPadrao() {
         })
     }
 
+    private fun visualizarCarrinho() {
+        Toast.makeText(this, "Carrinho", Toast.LENGTH_LONG).show()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
@@ -82,7 +86,7 @@ class MainActivity : ActivityPadrao() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.menu_carrinho -> {
-                Toast.makeText(this, "Carrinho", Toast.LENGTH_LONG).show()
+                visualizarCarrinho()
                 true
             }else -> super.onOptionsItemSelected(item)
         }

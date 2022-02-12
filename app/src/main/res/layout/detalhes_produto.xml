@@ -78,6 +78,7 @@
                 android:layout_marginTop="5dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Valor"
+                app:helperTextTextColor="@color/rose_gold_300"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_DetProd_Produto">
 
@@ -101,6 +102,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Quantidade"
                 app:endIconMode="clear_text"
+                app:helperText="Requerido"
+                app:helperTextTextColor="@color/rose_gold_300"
                 app:layout_constraintTop_toBottomOf="@+id/txt_DetProd_Produto"
                 app:layout_constraintStart_toEndOf="@+id/valor_textInputLayout">
 
@@ -120,10 +123,14 @@
                 android:id="@+id/cor_textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Informe a Cor"
                 app:endIconMode="clear_text"
+                app:helperText="Requerido"
+                app:helperTextTextColor="@color/rose_gold_300"
+                app:counterEnabled="true"
+                app:counterMaxLength="40"
                 app:layout_constraintTop_toBottomOf="@+id/valor_textInputLayout"
                 app:layout_constraintStart_toEndOf="@+id/valor_textInputLayout">
 
@@ -133,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textCapCharacters"
                     android:textStyle="italic|bold"
+                    android:maxLength="40"
                     android:textSize="20sp"
                     android:textColor="@color/black"
                 />
