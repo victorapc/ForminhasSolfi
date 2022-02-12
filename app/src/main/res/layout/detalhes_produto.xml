@@ -36,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_Detalhes_Produto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="50dp"
         android:layout_marginTop="55dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -120,27 +121,49 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/valor_final_textInputLayout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Valor Total"
+                app:helperTextTextColor="@color/rose_gold_300"
+                app:layout_constraintTop_toBottomOf="@+id/valor_textInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/valor_textInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_DetProd_ValorFinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:textStyle="italic|bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/cor_textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Informe a Cor"
                 app:endIconMode="clear_text"
                 app:helperText="Requerido"
                 app:helperTextTextColor="@color/rose_gold_300"
                 app:counterEnabled="true"
-                app:counterMaxLength="40"
-                app:layout_constraintTop_toBottomOf="@+id/valor_textInputLayout"
-                app:layout_constraintStart_toEndOf="@+id/valor_textInputLayout">
+                app:counterMaxLength="30"
+                app:layout_constraintTop_toBottomOf="@+id/valor_final_textInputLayout"
+                app:layout_constraintStart_toEndOf="@+id/valor_final_textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_DetProd_Cor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters"
+                    android:inputType="textCapWords"
                     android:textStyle="italic|bold"
-                    android:maxLength="40"
+                    android:maxLength="30"
                     android:textSize="20sp"
                     android:textColor="@color/black"
                 />

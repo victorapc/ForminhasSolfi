@@ -1,6 +1,8 @@
 package com.inux.forminhassolfi.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -31,6 +33,20 @@ class DetalhesProduto : ActivityPadrao() {
         btDetProdIncluirCarrinho.setOnClickListener {
             gravarCarrinho(passarCampos())
         }
+
+        edtDetProdQuantidae.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                calculaTotalProduto()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
 
     override fun iniciarFormulario() {
@@ -57,6 +73,10 @@ class DetalhesProduto : ActivityPadrao() {
         // Quantidade.
         edtDetProdQuantidae = edt_DetProd_Quantidade
         edtDetProdQuantidae.setText("1")
+        // Valor total.
+        edtDetProdValorTotal = edt_DetProd_ValorFinal
+        edtDetProdValorTotal.setText("R$ ${globais.formataValor(produto.valor)}")
+        edtDetProdValorTotal.isEnabled = false
         // Cor.
         edtDetProdCor = edt_DetProd_Cor
         // Incluir carrinho.
@@ -111,6 +131,37 @@ class DetalhesProduto : ActivityPadrao() {
 
             Toast.makeText(this, "Produto adicionado no carrinho com sucesso!", Toast.LENGTH_LONG).show()
             finish()
+        }
+    }
+
+    private fun calculaTotalProduto() {
+        var critica = false
+        var quantidade: Int
+
+        if (edtDetProdQuantidae.text.toString().equals("") || edtDetProdQuantidae.text.toString().equals("0")) {
+            quantidade = 0
+        } else {
+            quantidade = Integer.parseInt(edtDetProdQuantidae.text.toString())
+        }
+
+        if (!critica) {
+            if (quantidade <= 0) {
+                critica = true
+                globais.mensagemSnack(
+                    findViewById(android.R.id.content),
+                    "Obrigatório informar a quantidade.", resources
+                )
+            }
+        }
+
+        if (!critica) {
+            var valorTotal: Double
+
+            valorTotal = produto.valor * quantidade
+
+            edtDetProdValorTotal.setText("R$ ${globais.formataValor(valorTotal)}")
+        } else {
+            edtDetProdValorTotal.setText("R$ 0.00")
         }
     }
 
