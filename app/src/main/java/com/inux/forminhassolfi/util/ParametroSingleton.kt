@@ -6,6 +6,8 @@ class ParametroSingleton {
     companion object {
         lateinit var produto: Produto
 
+        var clickBotaoCarrinho = false
+
         const val INTENT_PRODUTO = "produtos"
     }
 }

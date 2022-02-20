@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/inf_Car_Produto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/rose_gold_300"
+                android:text="FS01 - Camelinha de luxo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_TiCor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/rose_gold_300"
+                android:text="Cor: "
+                app:layout_constraintStart_toStartOf="@+id/inf_Car_Produto"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_Produto"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_Cor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/rose_gold_200"
+                android:text="Azul Celeste"
+                app:layout_constraintStart_toEndOf="@+id/inf_Car_TiCor"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_Produto"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_TiQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/rose_gold_300"
+                android:text="Quantidade: "
+                app:layout_constraintStart_toStartOf="@+id/inf_Car_Produto"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_TiCor"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_Quantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:textColor="@color/rose_gold_200"
+                android:text="150"
+                app:layout_constraintStart_toEndOf="@+id/inf_Car_TiQuantidade"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_TiCor"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_TiValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/rose_gold_300"
+                android:text="Valor: "
+                app:layout_constraintEnd_toStartOf="@+id/inf_Car_Valor"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_TiCor"
+                android:layout_margin="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/inf_Car_Valor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:textColor="@color/rose_gold_200"
+                android:text="R$ 80.00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inf_Car_TiCor"
+                android:layout_margin="3dp">
+            </TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/inf_bt_Car_Deletar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:src="@drawable/ic_delete_rose">
+        </ImageButton>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

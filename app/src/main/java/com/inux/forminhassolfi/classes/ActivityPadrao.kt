@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 
 abstract class ActivityPadrao : AppCompatActivity() {
-    //MainActivity.
+    // MainActivity.
     protected lateinit var recyclerProduto: RecyclerView
     protected lateinit var imbQuemSomos: ImageButton
     protected lateinit var imbComoComprar: ImageButton
     protected lateinit var imbContato: ImageButton
 
-    //Contato.
+    // Contato.
     protected lateinit var imgFacebook: ImageView
     protected lateinit var imgWhatsApp: ImageView
     protected lateinit var imgInstagram: ImageView
     protected lateinit var imgEmail: ImageView
 
-    //Detalhes produto.
+    // Detalhes produto.
     protected lateinit var imgDetProdImagem: ImageView
     protected lateinit var txtDetProdProduto: TextView
     protected lateinit var edtDetProdValor: TextInputEditText
@@ -29,6 +29,13 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var edtDetProdCor: TextInputEditText
     protected lateinit var edtDetProdValorTotal: TextInputEditText
     protected lateinit var btDetProdIncluirCarrinho: Button
+
+    // Tela carrinho.
+    protected lateinit var edtTelCarNome: TextInputEditText
+    protected lateinit var edtTelCarCelular: TextInputEditText
+    protected lateinit var edtTelCarCupom: TextInputEditText
+    protected lateinit var recyclerCarrinho: RecyclerView
+    protected lateinit var btTelCarEnviarPedido: Button
 
     protected open fun configuracao(){
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

@@ -12,6 +12,7 @@ import com.inux.forminhassolfi.database.entity.Carrinho
 import com.inux.forminhassolfi.database.viewmodel.CarrinhoViewModel
 import com.inux.forminhassolfi.model.Produto
 import com.inux.forminhassolfi.util.MetodosGlobais
+import com.inux.forminhassolfi.util.ParametroSingleton
 import com.inux.forminhassolfi.util.ParametroSingleton.Companion.INTENT_PRODUTO
 import kotlinx.android.synthetic.main.detalhes_produto.*
 
@@ -128,6 +129,8 @@ class DetalhesProduto : ActivityPadrao() {
                 produto.valor
             )
             mCarrinhoViewModel.addCarrinho(carrinho)
+
+            ParametroSingleton.clickBotaoCarrinho = false
 
             Toast.makeText(this, "Produto adicionado no carrinho com sucesso!", Toast.LENGTH_LONG).show()
             finish()

@@ -49,6 +49,8 @@ class MainActivity : ActivityPadrao() {
     }
 
     override fun iniciarFormulario() {
+        ParametroSingleton.clickBotaoCarrinho = true
+
         // Instanciando objetos XML.
         recyclerProduto = recycler_produto
 
@@ -85,14 +87,18 @@ class MainActivity : ActivityPadrao() {
     private fun visualizarCarrinho() {
         mCarrinhoViewModel = ViewModelProvider(this).get(CarrinhoViewModel::class.java)
         mCarrinhoViewModel.readAllData.observe(this, { carrinho ->
-            if (carrinho != null) {
-                if (carrinho.size > 0) {
-                    Toast.makeText(this, "TESTE TEM ITEM CARRINho.", Toast.LENGTH_LONG).show()
+            if (ParametroSingleton.clickBotaoCarrinho) {
+                if (carrinho != null) {
+                    if (carrinho.size > 0) {
+                        startActivity(Intent(this@MainActivity, TelaCarrinho::class.java))
+                    } else {
+                        globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
+                    }
                 } else {
                     globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
                 }
             } else {
-                globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
+                ParametroSingleton.clickBotaoCarrinho = true
             }
         })
     }

@@ -43,7 +43,7 @@ class ProdutoAdapter(
 
 }
 
-class ProdutoViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+class ProdutoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val inf_Prod_Produto = itemView.inf_Prod_Produto
     val inf_Prod_Informacoes = itemView.inf_Prod_Informacoes
     val inf_Prod_imagem = itemView.inf_Prod_imagem

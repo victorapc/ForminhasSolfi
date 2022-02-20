@@ -9,6 +9,7 @@
     <string name="unidades300">300 Unidades</string>
     <string name="voce_sonha_e_nos_realizamos">Você sonha e nós realizamos!</string>
     <string name="carrinho">Carrinho</string>
+    <string name="carrinho_compca">Carrinho de Compras</string>
     <string name="quem_somos">Quem Somos</string>
     <string name="layoutcomplemento">LayoutComplemento</string>
     <string name="como_comprar">Como Comprar</string>
@@ -28,4 +29,6 @@
     <string name="email">forminhas.solfi@gmail.com</string>
     <string name="telefone">(33) 99986-3240 / (33) 99123-0198</string>
     <string name="observacao_contatos">Obs.: Os icones acessam os recursos. Por exemplo: o ícone do facebook entra na página da Fominhas Solfi</string>
+    <string name="enviar_pedido">Enviar Pedido</string>
+    <string name="limpar_carrinho">Limpar Carrinho</string>
 </resources>

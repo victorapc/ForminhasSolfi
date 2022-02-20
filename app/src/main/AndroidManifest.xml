@@ -27,6 +27,7 @@
         <activity android:name=".ui.ComoComprar"/>
         <activity android:name=".ui.Contato"/>
         <activity android:name=".ui.DetalhesProduto"/>
+        <activity android:name=".ui.TelaCarrinho"/>
     </application>
 
 </manifest>
