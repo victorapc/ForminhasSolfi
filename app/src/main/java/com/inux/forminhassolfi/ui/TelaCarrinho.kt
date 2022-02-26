@@ -1,10 +1,13 @@
 package com.inux.forminhassolfi.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.inux.forminhassolfi.R
@@ -15,10 +18,14 @@ import com.inux.forminhassolfi.database.viewmodel.CarrinhoViewModel
 import com.inux.forminhassolfi.interfacelistener.CarrinhoClickedListener
 import com.inux.forminhassolfi.util.MetodosGlobais
 import kotlinx.android.synthetic.main.tela_carrinho.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class TelaCarrinho : ActivityPadrao() {
     private lateinit var mCarrinhoViewModel: CarrinhoViewModel
     private lateinit var globais: MetodosGlobais
+    private lateinit var adapter: CarrinhoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +38,7 @@ class TelaCarrinho : ActivityPadrao() {
         iniciarFormulario()
 
         btTelCarEnviarPedido.setOnClickListener {
-
+            enviarPedido()
         }
     }
 
@@ -45,6 +52,8 @@ class TelaCarrinho : ActivityPadrao() {
         recyclerCarrinho = recycler_carrinho_produto
         btTelCarEnviarPedido = bt_TelCar_EnviarPedido
 
+        recylerProgressBar = recyler_ProgressBar
+
         recyclerCarrinho.layoutManager = LinearLayoutManager(this)
 
         configuracao()
@@ -52,40 +61,71 @@ class TelaCarrinho : ActivityPadrao() {
     }
 
     override fun comporLista() {
-        mCarrinhoViewModel.readAllData.observe(this, { carrinho ->
-            if (carrinho != null) {
-                if (carrinho.size > 0) {
-                    val adapter = CarrinhoAdapter(this@TelaCarrinho, carrinho, object :
-                        CarrinhoClickedListener {
-                        override fun carrinhoClickedListener(carrinho: Carrinho) {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                recylerProgressBar.visibility = View.VISIBLE
+
+                mCarrinhoViewModel.readAllData.observe(this@TelaCarrinho, { listaCarrinho ->
+                    if (listaCarrinho != null) {
+                        adapter = CarrinhoAdapter(this@TelaCarrinho, listaCarrinho, object :
+                            CarrinhoClickedListener {
+                            override fun carrinhoClickedListener(carrinho: Carrinho) {
+                                excluirRegistro("Deseja excluir o item do carrinho?", 1, carrinho)
+                            }
+                        })
+                        recyclerCarrinho.adapter = adapter
+
+                        if (listaCarrinho.size == 0) {
+                            recylerProgressBar.visibility = View.GONE
+
                             globais.mensagemSnack(
                                 findViewById(android.R.id.content),
-                                "Deletado item: ${carrinho.produto}",
+                                "Carrinho Vazio.",
                                 resources
                             )
+                        } else {
+                            recylerProgressBar.visibility = View.GONE
                         }
-                    })
-                    recyclerCarrinho.adapter = adapter
-                } else {
-                    globais.mensagemSnack(
-                        findViewById(android.R.id.content),
-                        "Carrinho Vazio.",
-                        resources
-                    )
-                }
-            } else {
-                globais.mensagemSnack(
-                    findViewById(android.R.id.content),
-                    "Carrinho Vazio.",
-                    resources
-                )
+                    } else {
+                        recylerProgressBar.visibility = View.GONE
+
+                        globais.mensagemSnack(
+                            findViewById(android.R.id.content),
+                            "Carrinho Vazio.",
+                            resources
+                        )
+                    }
+                })
+            } catch (e: Exception) {
+                recylerProgressBar.visibility = View.GONE
             }
-        })
+        }
     }
 
-    private fun limparCarrinho() {
-        globais.mensagemSnack(findViewById(android.R.id.content), "Limpando carrinho.", resources)
-        //mCarrinhoViewModel.deleteAllCarrinho()
+    private fun excluirRegistro(mensagem: String, tipo: Int, carrinho: Carrinho?) {
+        val builder = AlertDialog.Builder(this@TelaCarrinho)
+        builder.setPositiveButton("Sim"){ _,_ ->
+            if (tipo == 0) {
+                mCarrinhoViewModel.deleteAllCarrinho()
+                finish()
+            } else {
+                mCarrinhoViewModel.deleteCarrinho(carrinho!!)
+
+                adapter.notifyDataSetChanged()
+            }
+        }
+        builder.setNegativeButton("Não"){ _,_ ->}
+        builder.setTitle(resources.getString(R.string.app_name))
+        builder.setMessage(mensagem)
+        builder.create().show()
+    }
+
+    private fun enviarPedido() {
+        globais.mensagemSnack(
+            findViewById(android.R.id.content),
+            "Pedido Enviado.",
+            resources
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -97,7 +137,7 @@ class TelaCarrinho : ActivityPadrao() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_limpar -> {
-                limparCarrinho()
+                excluirRegistro("Deseja limpar o carrinho?", 0, null)
                 true
             }
             else -> super.onOptionsItemSelected(item)

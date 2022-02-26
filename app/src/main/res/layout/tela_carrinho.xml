@@ -1,147 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/rose_gold_100">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_Tela_Carrinho"
+    <ProgressBar
+        android:id="@+id/recyler_ProgressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:visibility="gone"
+    />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:fontFamily="@font/marck_script"
-            android:textColor="@color/rose_gold_500"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="40sp"
-            android:layout_marginEnd="24dp"
-        />
-    </androidx.appcompat.widget.Toolbar>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nome_textInputLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Informe o Nome"
-        app:endIconMode="clear_text"
-        app:helperText="Requerido"
-        app:helperTextTextColor="@color/rose_gold_300"
-        app:counterEnabled="true"
-        app:counterMaxLength="40"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_Tela_Carrinho">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_TelCar_Nome"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_Tela_Carrinho"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:textStyle="italic|bold"
-            android:maxLength="40"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/lay_TelCar_CelularCupom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:weightSum="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nome_textInputLayout"
-        android:orientation="horizontal">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/celular_textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.45"
-            android:layout_marginTop="5dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Celular"
-            app:helperText="Requerido"
-            app:helperTextTextColor="@color/rose_gold_300">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_TelCar_Celular"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:textStyle="italic|bold"
-                android:textSize="20sp"
-                android:maxLength="15"
-                android:textColor="@color/black"
+                android:text="@string/app_name"
+                android:fontFamily="@font/marck_script"
+                android:textColor="@color/rose_gold_500"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:layout_marginEnd="24dp"
             />
-        </com.google.android.material.textfield.TextInputLayout>
+        </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cupom_textInputLayout"
+            android:id="@+id/nome_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.55"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Cupom"
+            android:hint="Informe o Nome"
             app:endIconMode="clear_text"
-            app:helperTextTextColor="@color/rose_gold_300">
+            app:helperText="Requerido"
+            app:helperTextTextColor="@color/rose_gold_300"
+            app:counterEnabled="true"
+            app:counterMaxLength="40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_Tela_Carrinho">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_TelCar_Cupom"
+                android:id="@+id/edt_TelCar_Nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:textStyle="italic|bold"
-                android:maxLength="4"
+                android:maxLength="40"
                 android:textSize="20sp"
                 android:textColor="@color/black"
             />
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_carrinho_produto"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/lay_TelCar_CelularCupom"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bt_TelCar_EnviarPedido"
-    />
+        <LinearLayout
+            android:id="@+id/lay_TelCar_CelularCupom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:weightSum="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nome_textInputLayout"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/bt_TelCar_EnviarPedido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enviar_pedido"
-        android:background="@drawable/selector_button"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent">
-    </Button>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/celular_textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Celular"
+                app:helperText="Requerido"
+                app:helperTextTextColor="@color/rose_gold_300">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_TelCar_Celular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textStyle="italic|bold"
+                    android:textSize="20sp"
+                    android:maxLength="15"
+                    android:textColor="@color/black"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/cupom_textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Cupom"
+                app:endIconMode="clear_text"
+                app:helperTextTextColor="@color/rose_gold_300">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_TelCar_Cupom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textStyle="italic|bold"
+                    android:maxLength="4"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_carrinho_produto"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/lay_TelCar_CelularCupom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bt_TelCar_EnviarPedido"
+        />
+
+        <Button
+            android:id="@+id/bt_TelCar_EnviarPedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enviar_pedido"
+            android:background="@drawable/selector_button"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

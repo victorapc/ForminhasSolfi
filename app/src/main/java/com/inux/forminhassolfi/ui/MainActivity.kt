@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,9 @@ import com.inux.forminhassolfi.model.Produto
 import com.inux.forminhassolfi.util.MetodosGlobais
 import com.inux.forminhassolfi.util.ParametroSingleton
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,30 +62,44 @@ class MainActivity : ActivityPadrao() {
         imbComoComprar = imb_Como_Comprar
         imbContato = imb_Contato
 
+        recylerProgressBarMain = recyler_ProgressBar_Main
+
         recyclerProduto.layoutManager = LinearLayoutManager(this)
         comporLista()
     }
 
     override fun comporLista() {
-        val call: Call<List<Produto>> = MyRetrofit.instance?.produtoApi()?.getProdutoApi() as Call<List<Produto>>
+        CoroutineScope(Dispatchers.Main).launch {
+            recylerProgressBarMain.visibility = View.VISIBLE
 
-        call.enqueue(object : Callback<List<Produto>> {
-            override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
-                val adapter = ProdutoAdapter(this@MainActivity, response.body()?.toList() as List<Produto>,
-                    object : ProdutoClickedListener {
-                        override fun produtoClickedListener(produto: Produto) {
-                            startActivity(Intent(this@MainActivity, DetalhesProduto::class.java).apply {
-                                putExtra(ParametroSingleton.INTENT_PRODUTO, produto)
+            try {
+                val call: Call<List<Produto>> = MyRetrofit.instance?.produtoApi()?.getProdutoApi() as Call<List<Produto>>
+
+                call.enqueue(object : Callback<List<Produto>> {
+                    override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
+                        val adapter = ProdutoAdapter(this@MainActivity, response.body()?.toList() as List<Produto>,
+                            object : ProdutoClickedListener {
+                                override fun produtoClickedListener(produto: Produto) {
+                                    startActivity(Intent(this@MainActivity, DetalhesProduto::class.java).apply {
+                                        putExtra(ParametroSingleton.INTENT_PRODUTO, produto)
+                                    })
+                                }
                             })
-                        }
-                    })
-                recyclerProduto.adapter = adapter
-            }
+                        recyclerProduto.adapter = adapter
 
-            override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
-                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
+                        recylerProgressBarMain.visibility = View.GONE
+                    }
+
+                    override fun onFailure(call: Call<List<Produto>>, t: Throwable) {
+                        recylerProgressBarMain.visibility = View.GONE
+
+                        Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+            } catch (e: Exception) {
+                recylerProgressBarMain.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun visualizarCarrinho() {

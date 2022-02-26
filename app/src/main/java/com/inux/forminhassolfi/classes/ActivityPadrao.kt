@@ -1,9 +1,6 @@
 package com.inux.forminhassolfi.classes
 
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
@@ -14,6 +11,7 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var imbQuemSomos: ImageButton
     protected lateinit var imbComoComprar: ImageButton
     protected lateinit var imbContato: ImageButton
+    protected lateinit var recylerProgressBarMain: ProgressBar
 
     // Contato.
     protected lateinit var imgFacebook: ImageView
@@ -36,6 +34,7 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var edtTelCarCupom: TextInputEditText
     protected lateinit var recyclerCarrinho: RecyclerView
     protected lateinit var btTelCarEnviarPedido: Button
+    protected lateinit var recylerProgressBar: ProgressBar
 
     protected open fun configuracao(){
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
