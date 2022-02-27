@@ -47,7 +47,6 @@
             android:id="@+id/nome_textInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -90,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.45"
-                android:layout_marginTop="5dp"
+
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="Celular"
                 app:helperText="Requerido"
@@ -113,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.55"
-                android:layout_marginTop="5dp"
+
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -131,6 +130,15 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                 />
+
+                <Button
+                    android:id="@+id/bt_TelCar_AplicarCupom"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    android:text="Aplicar Cupom">
+                </Button>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -138,20 +146,106 @@
             android:id="@+id/recycler_carrinho_produto"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             app:layout_constraintTop_toBottomOf="@+id/lay_TelCar_CelularCupom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bt_TelCar_EnviarPedido"
+            app:layout_constraintBottom_toTopOf="@id/card_Totalizacao"
         />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_Totalizacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="4dp"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/rose_gold_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bt_TelCar_EnviarPedido">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/txt_TelCar_TiTotalBruto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_bruto"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txt_TelCar_TotalBruto">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_TelCar_TotalBruto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="italic"
+                    android:text="R$ 0,00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/white">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_TelCar_TiCupom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/desc_cupom"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_TelCar_TiTotalBruto"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_TelCar_TiTotalBruto"
+                    android:textColor="@color/white">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_TelCar_Cupom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="italic"
+                    android:text="R$ 0,00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_TelCar_TotalBruto"
+                    android:textColor="@color/white">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_TelCar_TiTotalLiquido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_final"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_TelCar_TiTotalBruto"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_TelCar_TiCupom"
+                    android:textColor="@color/white">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt_TelCar_TotalLiquido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R$ 0,00"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_TelCar_Cupom"
+                    android:textColor="@color/white">
+                </TextView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/bt_TelCar_EnviarPedido"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/enviar_pedido"
             android:background="@drawable/selector_button"
             android:textColor="@color/white"

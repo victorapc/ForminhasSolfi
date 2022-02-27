@@ -19,7 +19,7 @@ class CarrinhoRepository(private val solphiDao: SolphiDao) {
         solphiDao.deleteAllCarrinho()
     }
 
-    fun readData(idTable: Int): LiveData<Carrinho> {
+    fun readData(idTable: String): LiveData<Carrinho> {
         return solphiDao.readData(idTable)
     }
 }

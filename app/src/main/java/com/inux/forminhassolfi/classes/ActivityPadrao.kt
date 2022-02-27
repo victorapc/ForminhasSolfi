@@ -27,6 +27,9 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var edtDetProdCor: TextInputEditText
     protected lateinit var edtDetProdValorTotal: TextInputEditText
     protected lateinit var btDetProdIncluirCarrinho: Button
+    protected lateinit var txtTelCarTotalBruto: TextView
+    protected lateinit var txtTelCarCupom: TextView
+    protected lateinit var txtTelCarTotalLiquido: TextView
 
     // Tela carrinho.
     protected lateinit var edtTelCarNome: TextInputEditText
@@ -34,6 +37,7 @@ abstract class ActivityPadrao : AppCompatActivity() {
     protected lateinit var edtTelCarCupom: TextInputEditText
     protected lateinit var recyclerCarrinho: RecyclerView
     protected lateinit var btTelCarEnviarPedido: Button
+    protected lateinit var btTelCarAplicarCupom: Button
     protected lateinit var recylerProgressBar: ProgressBar
 
     protected open fun configuracao(){

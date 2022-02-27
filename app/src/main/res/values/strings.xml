@@ -31,4 +31,7 @@
     <string name="observacao_contatos">Obs.: Os icones acessam os recursos. Por exemplo: o ícone do facebook entra na página da Fominhas Solfi</string>
     <string name="enviar_pedido">Enviar Pedido</string>
     <string name="limpar_carrinho">Limpar Carrinho</string>
+    <string name="total_bruto">Total Bruto: </string>
+    <string name="total_final">Total Final: </string>
+    <string name="desc_cupom">Desc. Cupom: </string>
 </resources>

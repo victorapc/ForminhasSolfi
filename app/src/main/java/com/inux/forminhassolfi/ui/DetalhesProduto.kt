@@ -50,6 +50,11 @@ class DetalhesProduto : ActivityPadrao() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
+    }
+
     override fun iniciarFormulario() {
         // Pegando dados da intent enviada via Parceable.
         produto = intent.extras?.getParcelable(INTENT_PRODUTO)!!
@@ -120,20 +125,27 @@ class DetalhesProduto : ActivityPadrao() {
 
     private fun gravarCarrinho(critica: Boolean) {
         if (!critica) {
-            var carrinho = Carrinho(
-                0,
-                produto.codigo,
-                produto.produto,
-                edtDetProdCor.text.toString(),
-                Integer.parseInt(edtDetProdQuantidae.text.toString()),
-                produto.valor
-            )
-            mCarrinhoViewModel.addCarrinho(carrinho)
+            mCarrinhoViewModel.readData(produto.codigo).observe(this, { carrinho ->
+                if (carrinho == null) {
+                    var carrinho = Carrinho(
+                        0,
+                        produto.codigo,
+                        produto.produto,
+                        edtDetProdCor.text.toString(),
+                        Integer.parseInt(edtDetProdQuantidae.text.toString()),
+                        produto.valor
+                    )
+                    mCarrinhoViewModel.addCarrinho(carrinho)
 
-            ParametroSingleton.clickBotaoCarrinho = false
-
-            Toast.makeText(this, "Produto adicionado no carrinho com sucesso!", Toast.LENGTH_LONG).show()
-            finish()
+                    Toast.makeText(this, "Produto adicionado no carrinho com sucesso!", Toast.LENGTH_LONG).show()
+                    finish()
+                } else {
+                    globais.mensagemSnack(
+                        findViewById(android.R.id.content),
+                        "Produto já incluído no carrinho.", resources
+                    )
+                }
+            })
         }
     }
 

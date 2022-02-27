@@ -52,8 +52,13 @@ class MainActivity : ActivityPadrao() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
+    }
+
     override fun iniciarFormulario() {
-        ParametroSingleton.clickBotaoCarrinho = true
+        mCarrinhoViewModel = ViewModelProvider(this).get(CarrinhoViewModel::class.java)
 
         // Instanciando objetos XML.
         recyclerProduto = recycler_produto
@@ -103,20 +108,15 @@ class MainActivity : ActivityPadrao() {
     }
 
     private fun visualizarCarrinho() {
-        mCarrinhoViewModel = ViewModelProvider(this).get(CarrinhoViewModel::class.java)
         mCarrinhoViewModel.readAllData.observe(this, { carrinho ->
-            if (ParametroSingleton.clickBotaoCarrinho) {
-                if (carrinho != null) {
-                    if (carrinho.size > 0) {
-                        startActivity(Intent(this@MainActivity, TelaCarrinho::class.java))
-                    } else {
-                        globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
-                    }
+            if (carrinho != null) {
+                if (carrinho.size > 0) {
+                    startActivity(Intent(this@MainActivity, TelaCarrinho::class.java))
                 } else {
                     globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
                 }
             } else {
-                ParametroSingleton.clickBotaoCarrinho = true
+                globais.mensagemSnack(findViewById(android.R.id.content), "Carrinho Vazio.", resources)
             }
         })
     }
@@ -130,7 +130,7 @@ class MainActivity : ActivityPadrao() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.menu_carrinho -> {
-                visualizarCarrinho()
+                startActivity(Intent(this@MainActivity, TelaCarrinho::class.java))
                 true
             }else -> super.onOptionsItemSelected(item)
         }

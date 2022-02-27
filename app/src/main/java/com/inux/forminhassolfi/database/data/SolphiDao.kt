@@ -19,7 +19,7 @@ interface SolphiDao {
     @Query("SELECT * FROM carrinho_table ORDER BY id ASC")
     fun readAllData(): LiveData<List<Carrinho>>
 
-    @Query("SELECT * FROM carrinho_table WHERE(id = :idTable)")
-    fun readData(idTable: Int): LiveData<Carrinho>
+    @Query("SELECT * FROM carrinho_table WHERE(codigo = :idTable)")
+    fun readData(idTable: String): LiveData<Carrinho>
     //----------------------------------------------------------------------------------------------
 }

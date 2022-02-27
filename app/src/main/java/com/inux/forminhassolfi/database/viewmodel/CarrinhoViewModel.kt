@@ -38,7 +38,7 @@ class CarrinhoViewModel(application: Application): AndroidViewModel(application)
         }
     }
 
-    fun readData(idTable: Int) : LiveData<Carrinho>{
+    fun readData(idTable: String) : LiveData<Carrinho>{
         return repository.readData(idTable)
     }
 }

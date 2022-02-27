@@ -16,7 +16,9 @@ import com.inux.forminhassolfi.classes.ActivityPadrao
 import com.inux.forminhassolfi.database.entity.Carrinho
 import com.inux.forminhassolfi.database.viewmodel.CarrinhoViewModel
 import com.inux.forminhassolfi.interfacelistener.CarrinhoClickedListener
+import com.inux.forminhassolfi.model.Cupom
 import com.inux.forminhassolfi.util.MetodosGlobais
+import com.inux.forminhassolfi.util.ParametroSingleton
 import kotlinx.android.synthetic.main.tela_carrinho.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +28,9 @@ class TelaCarrinho : ActivityPadrao() {
     private lateinit var mCarrinhoViewModel: CarrinhoViewModel
     private lateinit var globais: MetodosGlobais
     private lateinit var adapter: CarrinhoAdapter
+    private var listaCarrinhoGlobal: List<Carrinho>? = null
+    private var descontoCupom: Int? = 0
+    private var cupom: Cupom? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +45,20 @@ class TelaCarrinho : ActivityPadrao() {
         btTelCarEnviarPedido.setOnClickListener {
             enviarPedido()
         }
+
+        btTelCarAplicarCupom.setOnClickListener {
+            cupom = Cupom(1, "OTAV", 5.0)
+            calcularTotal()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        finish()
     }
 
     override fun iniciarFormulario() {
+        descontoCupom = 0
         // Iniciando view model.
         mCarrinhoViewModel = ViewModelProvider(this).get(CarrinhoViewModel::class.java)
 
@@ -51,6 +67,11 @@ class TelaCarrinho : ActivityPadrao() {
         edtTelCarCupom = edt_TelCar_Cupom
         recyclerCarrinho = recycler_carrinho_produto
         btTelCarEnviarPedido = bt_TelCar_EnviarPedido
+        btTelCarAplicarCupom = bt_TelCar_AplicarCupom
+
+        txtTelCarTotalBruto = txt_TelCar_TotalBruto
+        txtTelCarCupom = txt_TelCar_Cupom
+        txtTelCarTotalLiquido = txt_TelCar_TotalLiquido
 
         recylerProgressBar = recyler_ProgressBar
 
@@ -84,6 +105,10 @@ class TelaCarrinho : ActivityPadrao() {
                                 resources
                             )
                         } else {
+                            listaCarrinhoGlobal = listaCarrinho
+
+                            calcularTotal()
+
                             recylerProgressBar.visibility = View.GONE
                         }
                     } else {
@@ -100,6 +125,41 @@ class TelaCarrinho : ActivityPadrao() {
                 recylerProgressBar.visibility = View.GONE
             }
         }
+    }
+
+    private fun aplicouDesconto() : Boolean {
+        var isDesconto = false
+
+        if (!edtTelCarCupom.text.isNullOrEmpty()) {
+            if (cupom != null) {
+                if (edtTelCarCupom.text.toString().uppercase() == cupom!!.codigo) {
+                    isDesconto = true
+                }
+            }
+        }
+
+        return isDesconto
+    }
+
+
+    private fun calcularTotal() {
+        var totalBruto = 0.00
+        var descCupom = 0.00
+        var totalLiquido = 0.00
+
+        listaCarrinhoGlobal?.forEach { carrinho ->
+            totalBruto = totalBruto + (carrinho.valor * carrinho.quantidade)
+        }
+
+        txtTelCarTotalBruto.text = "R$ ${globais.formataValor(totalBruto)}"
+        if (aplicouDesconto()) {
+            if (cupom != null) {
+                descCupom = totalBruto * (cupom!!.desconto / 100)
+            }
+        }
+        txtTelCarCupom.text = "R$ ${globais.formataValor(descCupom)}"
+        totalLiquido = totalBruto - descCupom
+        txtTelCarTotalLiquido.text = "R$ ${globais.formataValor(totalLiquido)}"
     }
 
     private fun excluirRegistro(mensagem: String, tipo: Int, carrinho: Carrinho?) {
@@ -121,11 +181,48 @@ class TelaCarrinho : ActivityPadrao() {
     }
 
     private fun enviarPedido() {
-        globais.mensagemSnack(
-            findViewById(android.R.id.content),
-            "Pedido Enviado.",
-            resources
-        )
+        var critica = false
+
+        if (!critica) {
+            if (listaCarrinhoGlobal == null) {
+                critica = true
+                globais.mensagemSnack(
+                    findViewById(android.R.id.content),
+                    "Não é possível enviar pedido sem produtos.",
+                    resources
+                )
+            }
+        }
+
+        if (!critica) {
+            if (edtTelCarNome.text.isNullOrEmpty()) {
+                critica = true
+                globais.mensagemSnack(
+                    findViewById(android.R.id.content),
+                    "É obrigatório informar o nome.",
+                    resources
+                )
+            }
+        }
+
+        if (!critica) {
+            if (edtTelCarCelular.text.isNullOrEmpty()) {
+                critica = true
+                globais.mensagemSnack(
+                    findViewById(android.R.id.content),
+                    "É obrigatório informar o telefone.",
+                    resources
+                )
+            }
+        }
+
+        if (!critica) {
+            globais.mensagemSnack(
+                findViewById(android.R.id.content),
+                "Pedido Enviado.",
+                resources
+            )
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
