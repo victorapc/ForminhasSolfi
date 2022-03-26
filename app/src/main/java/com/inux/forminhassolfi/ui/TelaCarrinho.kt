@@ -236,6 +236,8 @@ class TelaCarrinho : ActivityPadrao() {
                 pedido.append(carrinho.codigo)
                 pedido.append(" - ")
                 pedido.append(carrinho.produto)
+                pedido.append(" | ")
+                pedido.append(carrinho.cor)
                 pedido.append(" | R$ ")
                 pedido.append(carrinho.quantidade * carrinho.valor)
                 pedido.append("\n")
