@@ -38,10 +38,23 @@
                 android:textColor="@color/rose_gold_500"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="40sp"
+                android:textSize="28sp"
                 android:layout_marginEnd="24dp"
             />
         </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/txt_TelCar_Informacoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/informacoes"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/rose_gold_500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_Tela_Carrinho">>
+        </TextView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nome_textInputLayout"
@@ -58,7 +71,7 @@
             app:counterMaxLength="40"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_Tela_Carrinho">
+            app:layout_constraintTop_toBottomOf="@id/txt_TelCar_Informacoes">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_TelCar_Nome"

@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.tela_carrinho.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 
 class TelaCarrinho : ActivityPadrao() {
     private lateinit var mCarrinhoViewModel: CarrinhoViewModel
@@ -217,6 +218,48 @@ class TelaCarrinho : ActivityPadrao() {
         }
 
         if (!critica) {
+            var pedido = StringBuilder()
+            pedido.append("NOME: ")
+            pedido.append(edtTelCarNome.text.toString())
+            pedido.append("\n")
+            pedido.append("CELULAR: ")
+            pedido.append(edtTelCarCelular.text.toString())
+            pedido.append("\n")
+            pedido.append("CUPOM: ")
+            pedido.append(edtTelCarCupom.text.toString())
+            pedido.append("\n")
+            pedido.append("       --------------------")
+            pedido.append("\n")
+            listaCarrinhoGlobal?.forEach { carrinho ->
+                pedido.append(carrinho.quantidade)
+                pedido.append(" | ")
+                pedido.append(carrinho.codigo)
+                pedido.append(" - ")
+                pedido.append(carrinho.produto)
+                pedido.append(" | R$ ")
+                pedido.append(carrinho.quantidade * carrinho.valor)
+                pedido.append("\n")
+            }
+            pedido.append("       --------------------")
+            pedido.append("\n")
+            pedido.append("TOTAL BRUTO: ")
+            pedido.append(txtTelCarTotalBruto.text.toString())
+            pedido.append("\n")
+            pedido.append("DESC. CUPOM: ")
+            pedido.append(txtTelCarCupom.text.toString())
+            pedido.append("\n")
+            pedido.append("TOTAL FINAL: ")
+            pedido.append(txtTelCarTotalLiquido.text.toString())
+            pedido.append("\n")
+
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, pedido.toString())
+                setPackage("com.whatsapp")
+                type = "text/plain"
+            }
+            startActivity(intent)
+
             globais.mensagemSnack(
                 findViewById(android.R.id.content),
                 "Pedido Enviado.",

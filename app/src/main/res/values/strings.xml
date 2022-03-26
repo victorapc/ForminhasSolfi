@@ -34,4 +34,5 @@
     <string name="total_bruto">Total Bruto: </string>
     <string name="total_final">Total Final: </string>
     <string name="desc_cupom">Desc. Cupom: </string>
+    <string name="informacoes">Para enviar o pedido será necessário ter iniciado uma conversa com Forminhas Solphi</string>
 </resources>
